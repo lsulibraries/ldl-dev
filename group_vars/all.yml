@@ -23,7 +23,7 @@ institutions:
 
 environment_type: dev
 tomcat_xmx: "{{ (ansible_memtotal_mb*0.5)|int|abs }}m"
-fqdn_suffix: ldltest.lib.lsu.edu
+fqdn_suffix: library.local
 
 # software versions
 fedora_version: 3.8.1
