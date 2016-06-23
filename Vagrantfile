@@ -39,16 +39,6 @@ Vagrant.configure(2) do |config|
   require 'rbconfig'
   is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
   if is_windows
-    config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "local.yml"
-      ansible.verbose = 'vv'
-      ansible.extra_vars = {
-        mysql_local_installation: "true",
-        attach_mounts: false,
-        drupal_reverse_proxy: false
-      }
-    end
-  else
     config.vm.provision "ansible_local" do |ansible|
       ansible.playbook = "local.yml"
       ansible.verbose = 'vv'
@@ -56,7 +46,17 @@ Vagrant.configure(2) do |config|
         mysql_local_installation: "true",
         attach_mounts: false,
         drupal_reverse_proxy: false
-      }
+		}
+    end
+  else
+    config.vm.provision "ansible" do |ansible|
+      ansible.playbook = "local.yml"
+      ansible.verbose = 'vv'
+      ansible.extra_vars = {
+        mysql_local_installation: "true",
+        attach_mounts: false,
+        drupal_reverse_proxy: false
+		}
     end
   end
 end
