@@ -35,11 +35,7 @@ Vagrant.configure(2) do |config|
     vb.memory = "4000"
   end
   
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "local.yml"
-      
-      }
-    end
+
       # Use ansible provisioner if it's installed on host, ansible_local if not.
   if which('ansible-playbook')
     config.vm.provision "ansible" do |ansible|
@@ -49,6 +45,7 @@ Vagrant.configure(2) do |config|
         mysql_local_installation: "true",
         attach_mounts: false,
         drupal_reverse_proxy: false
+		}
     end
   else
     config.vm.provision "ansible_local" do |ansible|
@@ -58,6 +55,7 @@ Vagrant.configure(2) do |config|
         mysql_local_installation: "true",
         attach_mounts: false,
         drupal_reverse_proxy: false
+		}
     end
   end
 end
