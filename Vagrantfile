@@ -3,8 +3,8 @@
 
 Vagrant.configure(2) do |config|
 
-  config.vm.box = "ldl1"
-
+  config.vm.box = "islandx"
+  config.vm.box_url = 'http://lib-dig003.lsu.edu/vagrant/islandx/'
   config.vm.network "forwarded_port", guest: 80,   host: 8000 # apache
   config.vm.network "forwarded_port", guest: 8080, host: 8080 # tomcat
   config.vm.network "forwarded_port", guest: 3306, host: 3306 # mysql
@@ -37,11 +37,27 @@ Vagrant.configure(2) do |config|
   
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "local.yml"
+      
+      }
+    end
+      # Use ansible provisioner if it's installed on host, ansible_local if not.
+  if which('ansible-playbook')
+    config.vm.provision "ansible" do |ansible|
+      ansible.playbook = "local.yml"
       ansible.verbose = 'vv'
       ansible.extra_vars = {
         mysql_local_installation: "true",
         attach_mounts: false,
         drupal_reverse_proxy: false
-      }
     end
+  else
+    config.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "local.yml"
+      ansible.verbose = 'vv'
+      ansible.extra_vars = {
+        mysql_local_installation: "true",
+        attach_mounts: false,
+        drupal_reverse_proxy: false
+    end
+  end
 end
