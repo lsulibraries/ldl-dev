@@ -7,7 +7,7 @@ __Windows users, NB:__ ensure that you have Vagrant version >= 1.8.2 https://www
 * `vagrant up`
 * once the provisioner completes, find the main site at http://localhost:8000
 * for a more realistic environment, add the lines below to your system's `hosts` file: https://support.rackspace.com/how-to/modify-your-hosts-file/
-  * with this done, you should be able to navigate to subsites http://hnoc.library.local, http://ldl.library.local, etc
+  * with this done, you should be able to navigate to subsites http://hnoc.library.local:8000, http://ldl.library.local:8000, etc
 
 
 ~~~
