@@ -46,6 +46,7 @@ Vagrant.configure(2) do |config|
     config.vm.provision "ansible_local" do |ansible|
       ansible.playbook = "local.yml"
       ansible.verbose = 'vv'
+      ansible.install = true
       ansible.extra_vars = {
         mysql_local_installation: "true",
         attach_mounts: false,
