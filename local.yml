@@ -1,5 +1,3 @@
 ---
-- hosts: all
-  become: true
-  roles:
-    - ansible-role-islandora-local
+- include: vagrant-hack.yml
+- include: islandora.yml
