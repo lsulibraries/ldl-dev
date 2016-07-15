@@ -1,0 +1,3 @@
+drush user-create "ejkelly" --mail="ejkelly@loyno.edu" --password="password" 
+
+drush user-add-role "collection admin" ejkelly
