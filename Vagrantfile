@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.box = "islandx"
   config.vm.box_url = 'http://lib-dig003.lsu.edu/vagrant/islandx/'
-  config.vm.box_version = '0.1.7.3'
+  config.vm.box_version = '0.1.7.5'
 
   config.vm.synced_folder "wwwroot/", "/opt/mounts/drupal", create: true, owner: "www-data", group: "www-data"
 
