@@ -1,0 +1,10 @@
+User name,Email address,Password,Role,Institution
+davidcomeaux,davidcomeaux@lsu.edu,temppass,administrator,lsu
+jpeak5,jpeak@lsu.edu,temppass,administrator,lsu
+mwaugh2,mwaugh2@lsu.edu,temppass,administrator,lsu
+wconli1,wconli1@lsu.edu,temppass,administrator,lsu
+rtilla1,rtilla@lsu.edu,temppass,repository admin,lsu
+carakey,carakey@lsu.edu,temppass,repository admin,lsu
+ejkelly,ejkelly@loyno.edu,temppass,collection admin,loyno
+angela_proctor,angela_proctor@subr.edu,temppass,collection admin,subr
+pthreatt,pthreatt@mcneese.edu,,collection admin,mcneese
