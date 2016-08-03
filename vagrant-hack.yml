@@ -4,9 +4,10 @@
   tasks:
     - name: check if files have already been copied
       stat: 
-        path: /opt/mounts/drupal/ldl/INSTALL.txt
-      register: drupal_files
+        path: "{{ drupal_core_path }}/sites/ldl.library.local"
+      register: drupal_sites
 
-    - name: copy webroot into mounted shared folder
-      command: "rsync -avz /opt/mounts/tmp/ldl/ /opt/mounts/drupal/ldl"
-      when: not drupal_files.stat.exists
+    - name: mv sites/* to match /etc/hosts
+      command: "mv {{ drupal_core_path }}/sites/{{ item }} {{ drupal_core_path }}/sites/{{ item }}.library.local"
+      when: not drupal_sites.stat.exists
+      with_items: "{{ institutions }}"

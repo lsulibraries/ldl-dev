@@ -37,6 +37,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4000"
+    vb.cpus = 2
   end
 
   # Use rbconfig to determine if we're on a windows host or not.
