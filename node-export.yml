@@ -2,8 +2,14 @@
 - hosts: all
   become: true
   tasks:
+    - name: enable ne mods
+      command: 'drush -y en node_export uuid'
+      args:
+        chdir: "{{ drupal_core_path }}/sites/{{ item }}.{{ fqdn_suffix }}"
+      with_items: "{{ institutions }}"
+
     - name: export landing_pages from each site
-      command: 'drush en -y node_export uuid && drush ne-export --type=landing_page --file=/vagrant/{{ item }}.export'
+      command: 'drush ne-export --type=landing_page --file=/vagrant/{{ item }}.export'
       args:
         chdir: "{{ drupal_core_path }}/sites/{{ item }}.{{ fqdn_suffix }}"
       with_items: "{{ institutions }}"
