@@ -1,7 +1,9 @@
 ---
-
-- name: export landing_pages from each site
-  command: 'drush ne-export --type=landing_page --file=/vagrant/{{ item }}.export'
-  args:
-    chdir: "{{ drupal_core_path }}/sites/{{ item }}.{{ fqdn_suffix }}"
-  with_items: "{{ institutions }}"
+- hosts: all
+  become: true
+  tasks:
+    - name: export landing_pages from each site
+      command: 'drush ne-export --type=landing_page --file=/vagrant/{{ item }}.export'
+      args:
+        chdir: "{{ drupal_core_path }}/sites/{{ item }}.{{ fqdn_suffix }}"
+      with_items: "{{ institutions }}"
